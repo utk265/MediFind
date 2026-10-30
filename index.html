@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>MediFind – Neighborhood Pharmacy Medicine Stock &amp; Price Finder</title>
+
+<link href="style.css" rel="stylesheet"/></head>
+<body>
+<!-- Disclaimer bar: always visible at the top -->
+<div class="notice">Educational demo. Prices, pharmacies and stock are sample data, not verified in real time.</div>
+<header class="nav">
+<a class="brand" href="#home"><span class="logo">+</span>MediFind</a>
+<button aria-expanded="false" aria-label="Toggle menu" class="menu-btn" id="menuBtn">Menu</button>
+<nav id="menu">
+<a href="#home">Home</a>
+<a href="#find">Find Medicines</a>
+<a href="#compare">Compare Prices</a>
+<a href="#generics">Generic Alternatives</a>
+<a href="#pharmacies">Nearby Pharmacies</a>
+<a href="#about">About Us</a>
+</nav>
+</header>
+<main>
+<section class="hero" id="home">
+<div class="wrap">
+<h1>Find Medicines.<br/>Compare Prices.<br/>Save Smarter.</h1>
+<p>Search by medicine name, brand or active ingredient, and see sample prices across neighborhood pharmacies.</p>
+<form class="search-row" id="heroForm">
+<input aria-label="Search medicines" id="heroSearch" placeholder="Try “paracetamol”, “Dolo” or “cetirizine”" type="search"/>
+<button class="btn" type="submit">Search</button>
+</form>
+<div class="chips" id="chips"></div>
+</div>
+</section>
+<section class="wrap">
+<h2>Browse by category</h2>
+<div class="grid cats" id="cats"></div>
+</section>
+<section class="wrap">
+<h2>Featured medicines</h2>
+<div class="grid" id="featured"></div>
+</section>
+<section class="wrap">
+<h2>How MediFind works</h2>
+<ol class="steps">
+<li><b>Search</b><span>Type a name, brand or ingredient, or pick a category.</span></li>
+<li><b>Compare</b><span>See sample prices and stock across demo pharmacies.</span></li>
+<li><b>Ask a professional</b><span>Discuss any alternative with a pharmacist or doctor before switching.</span></li>
+</ol>
+</section>
+<section class="wrap">
+<div class="cta">
+<h2>Small differences in price add up</h2>
+<p>Compare listed prices against the MRP and see how much a sample pharmacy could save you.</p>
+<a class="btn light" href="#compare">Compare prices</a>
+</div>
+</section>
+<!-- FIND MEDICINES -->
+<section class="wrap" id="find">
+<h2>Find medicines</h2>
+<div class="filters">
+<input aria-label="Search" id="q" placeholder="Name, brand or ingredient" type="search"/>
+<select aria-label="Category" id="fCat"></select>
+<select aria-label="Price range" id="fPrice">
+<option value="">Any price</option>
+<option value="0-50">Under ₹50</option>
+<option value="50-100">₹50 – ₹100</option>
+<option value="100-1000">Over ₹100</option>
+</select>
+<select aria-label="Availability" id="fStock">
+<option value="">Any availability</option>
+<option>In stock</option>
+<option>Low stock</option>
+<option>Out of stock</option>
+</select>
+<select aria-label="Sort" id="fSort">
+<option value="name">Sort: Name</option>
+<option value="price">Sort: Price (low to high)</option>
+<option value="savings">Sort: Savings (high to low)</option>
+</select>
+<select aria-label="Demo pharmacy for stock" id="fPharm"></select>
+<button class="btn ghost" id="clear" type="button">Clear filters</button>
+</div>
+<p aria-live="polite" class="muted" id="count"></p>
+<div class="grid" id="results"></div>
+</section>
+<!-- COMPARE PRICES -->
+<section class="wrap" id="compare">
+<h2>Compare prices</h2>
+<select aria-label="Choose medicine" id="cmpSel"></select>
+<div class="tablewrap" id="cmpOut"></div>
+<p class="muted">Sample prices only. Savings = MRP − listed price; savings % = savings ÷ MRP × 100.</p>
+</section>
+<!-- GENERIC ALTERNATIVES -->
+<section class="wrap" id="generics">
+<h2>Affordable generic alternatives</h2>
+<p class="warn">Alternatives share the same active ingredient, strength and form in this demo, but names or prices alone never make medicines interchangeable. Consult a qualified pharmacist or doctor before switching. Use prescription medicines only as prescribed.</p>
+<div class="grid" id="alts"></div>
+</section>
+<!-- PHARMACIES -->
+<section class="wrap" id="pharmacies">
+<h2>Nearby pharmacies</h2>
+<div class="filters">
+<input aria-label="Search pharmacies" id="pq" placeholder="Search by name or locality" type="search"/>
+<button class="btn ghost" id="geoBtn" type="button">Use my location</button>
+</div>
+<p aria-live="polite" class="muted" id="geoMsg">All pharmacies are fictional demo entries. No live map or location service is connected.</p>
+<div class="grid" id="pharms"></div>
+</section>
+<!-- ABOUT -->
+<section class="wrap about" id="about">
+<div>
+<h2>About us</h2>
+<p>Medifind is a student project developed by Logic Legends at Lovely Professional University. The project demonstrates how a digital platform can help users explore medicine information, compare sample pharmacy prices, and identify potential cost-saving options.</p>
+</div>
+<dl class="card info">
+<dt>Project Name</dt><dd>Neighborhood Pharmacy Medicine Stock &amp; Price Finder</dd>
+<dt>Team Name</dt><dd>Logic Legends</dd>
+<dt>Organization</dt><dd>Lovely Professional University (LPU)</dd>
+<dt>Project Type</dt><dd>Frontend Web Development Project</dd>
+</dl>
+</section>
+<section class="wrap">
+<p class="warn">This website is an educational demonstration. Medicine prices, pharmacy details, and stock statuses are sample data and are not verified in real time. This platform does not provide medical diagnosis or prescribe treatment. Always consult a qualified healthcare professional or pharmacist before changing medicines.</p>
+</section>
+</main>
+<footer>
+<b>MediFind</b> – Find Medicines. Compare Prices. Save Smarter.<br/>
+    A Frontend Web Development Project by Logic Legends, Lovely Professional University (LPU). Demo data only.
+  </footer>
+<!-- Shared modal -->
+<div class="overlay" hidden="" id="overlay">
+<div aria-labelledby="mTitle" aria-modal="true" class="modal" role="dialog">
+<button class="btn ghost close" id="mClose" type="button">Close</button>
+<div id="mBody"></div>
+</div>
+</div>
+
+<script defer="True" src="script.js"></script></body>
+</html>
